@@ -1,0 +1,13 @@
+<form #loginForm="ngForm" >
+  <div class="w3-row-padding" style="margin:0 -16px;">
+    <div class="w3-half w3-margin-bottom">
+      <label><i class="fa fa-calendar-o"></i> Username</label>
+      <input class="w3-input w3-border" type="text" placeholder="Username" name="username" ngModel required>
+    </div>
+    <div class="w3-half">
+      <label><i class="fa fa-calendar-o"></i> Password</label>
+      <input class="w3-input w3-border" type="password" placeholder="Password" name="password" ngModel required>
+    </div>
+  </div>
+  <button class="w3-button w3-block w3-teal w3-margin-top" [disabled]="loginForm.invalid" type="submit" (click)="login()"><i class="fa fa-search w3-margin-right"></i>Log In</button>
+</form>

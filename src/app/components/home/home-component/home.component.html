@@ -1,0 +1,16 @@
+<header class="w3-display-container w3-content" style="max-width:1500px;">
+  <img class="w3-image" src="/assets/images/apps-for-business-eraashu001-40063496-1920-650.jpg" alt="The Hotel" style="min-width:1000px" width="1500" height="800">
+  <div *ngIf="!isAuthenticated" class="w3-display-left w3-padding w3-col l6 m8">
+    <div class="w3-container w3-blue">
+      <h2><i class="fa fa-bed w3-margin-right"></i>{{labelHeader}}</h2>
+    </div>
+    <div class="w3-container w3-white w3-padding-16">
+      <app-login *ngIf="isLoginForm" ></app-login>
+      <app-register *ngIf="!isLoginForm"></app-register>
+      <div class="w3-margin-top form-link">{{labelMassege}} <a href="#" (click)="switchForm()">{{labelAction}}</a></div>
+    </div>
+  </div>
+</header>
+<body>
+  <app-popular-users></app-popular-users>
+</body>

@@ -1,0 +1,10 @@
+.form-link{
+    color: gray;
+}
+.form-link > a:hover {
+    color: blue;
+}
+body{
+    margin: 0 auto;
+    max-width: 1500px;
+}

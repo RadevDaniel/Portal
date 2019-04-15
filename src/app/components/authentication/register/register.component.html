@@ -1,0 +1,21 @@
+<form #registerForm="ngForm">
+  <div class="w3-row-padding" style="margin:0 -16px;">
+    <div class="w3-half w3-margin-bottom">
+      <label><i class="fa fa-calendar-o"></i> Username</label>
+      <input class="w3-input w3-border" type="text" placeholder="Username" name="username" ngModel required>
+    </div>
+    <div class="w3-half w3-margin-bottom">
+      <label><i class="fa fa-calendar-o"></i> Email</label>
+      <input class="w3-input w3-border" type="text" placeholder="email" name="email" ngModel required>
+    </div>
+    <div class="w3-half">
+      <label><i class="fa fa-calendar-o"></i> Password</label>
+      <input class="w3-input w3-border" type="text" placeholder="Password" name="password" ngModel required>
+    </div>
+    <div class="w3-half w3-margin-bottom">
+      <label><i class="fa fa-calendar-o"></i> Repeat Password</label>
+      <input class="w3-input w3-border" type="text" placeholder="Repeat Password" name="RepeatPass" ngModel required>
+    </div>
+  </div>
+  <button [disabled]="registerForm.invalid" class="w3-button w3-block w3-teal w3-margin-top" type="submit" (click)="register()"><i class="fa fa-search w3-margin-right"></i>Sign Up</button>
+</form>
