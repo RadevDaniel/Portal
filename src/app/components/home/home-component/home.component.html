@@ -1,5 +1,8 @@
-<header class="w3-display-container w3-content" style="max-width:1500px;">
-  <img class="w3-image" src="/assets/images/apps-for-business-eraashu001-40063496-1920-650.jpg" alt="The Hotel" style="min-width:1000px" width="1500" height="800">
+<header class=" w3-container" style="padding: 0 !important">
+  <div class="w3-container" style="padding: 0 !important; max-height: 800px; overflow: hidden">
+      <img class="w3-image" src="/assets/images/marketing.jpg" alt="The Hotel" width="100%" >
+  </div>
+  
   <div *ngIf="!isAuthenticated" class="w3-display-left w3-padding w3-col l6 m8">
     <div class="w3-container w3-blue">
       <h2><i class="fa fa-bed w3-margin-right"></i>{{labelHeader}}</h2>
@@ -12,5 +15,5 @@
   </div>
 </header>
 <body>
-  <app-popular-users></app-popular-users>
+  <app-popular-users [users]="users"></app-popular-users>
 </body>

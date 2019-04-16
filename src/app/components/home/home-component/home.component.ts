@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   labelMassege: string = 'Already have an account?';
   labelAction: string = 'Register';
   labelHeader: string = 'Login';
+  users: Object;
 
   constructor(
     private authService: AuthenticationService,
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
     this.guestService.loginGuest({username: 'guest', password: 'guest'}).subscribe(
       ()=>{
         this.guestService.getPopularUsers().subscribe(
-          (data)=> {console.log(data)}
+          (data)=> {this.users = data}
         )
       }
     );

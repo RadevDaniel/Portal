@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
     body['reviewers'] = 0;
     this.authService.register(body).subscribe((data) => {
         console.log(data);
-        //this.router.navigate([ '/login' ]);
     });
   };
 

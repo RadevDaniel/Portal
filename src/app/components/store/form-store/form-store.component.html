@@ -1,0 +1,56 @@
+<div class="w3-container w3-teal" style="margin-top: 120px;">
+    <h2>Input Form</h2>
+</div>
+<form #formStore="ngForm"  (submit)="submitProduct()" class="w3-container w3-card-4">
+  <pre>{{formStore.value | json}}</pre>
+  <div  *ngIf="image.touched && image.errors?.required" class="w3-panel w3-red w3-display-container">
+      <p>Image field is required!</p>
+  </div> 
+  <div  *ngIf="image.touched && image.errors?.pattern" class="w3-panel w3-red w3-display-container">
+      <p>Please provide valid image url!</p>
+  </div>
+ 
+  <div *ngIf="inputName.touched && inputName.errors?.required" class="w3-panel w3-red w3-display-container">
+      <p>Name field is required!</p>
+  </div>
+  <div *ngIf="inputName.touched && inputName.errors?.minlength" class="w3-panel w3-red w3-display-container">
+      <p>The name must contains atleast {{inputName.errors.minlength.requiredLength}} symbols</p>
+  </div>
+
+  <div *ngIf="price.touched && price.errors?.required" class="w3-panel w3-red w3-display-container">
+      <p>Please provide a price!</p>
+  </div>
+    <br>
+ 
+    <p>      
+      <label class="w3-text-grey">Name</label>
+      <input #inputName="ngModel" name="name" class="w3-input w3-border" type="text" ngModel required minlength="6">
+    </p>
+    <p class="w3-half">      
+        <label class="w3-text-grey">Price</label>
+        <input #price="ngModel" name="price" class="w3-input w3-border" type="number" ngModel required>
+    </p>
+    <p class="w3-half">      
+        <label class="w3-text-grey">ImageUrl</label>
+        <input #image="ngModel" name="image" class="w3-input w3-border" type="url" pattern="http([A-Za-z\:./\d_=+-])+" ngModel required>
+    </p>
+    <p>      
+      <label class="w3-text-grey">Description</label>
+      <textarea name="description" class="w3-input w3-border" style="resize:none" ngModel></textarea>
+    </p>
+    <br>
+    <div class="w3-row">
+      <div  ngModelGroup="tags" class="w3-half">
+        <input name="tag-electro" id="Electronics" class="w3-check" type="checkbox" ngModel>
+        <label>Milk</label>
+        <br>
+        <input name="tag-home" id="Home and Garden" class="w3-check" type="checkbox" ngModel>
+        <label>Sugar</label>
+        <br>
+        <input name="tag-sport" id="Sports" class="w3-check" type="checkbox" ngModel>
+        <label>Lemon (Disabled)</label>
+        <br><br>
+      </div>
+    </div>
+      <p><button type="submit" [disabled]="formStore.invalid" class="w3-btn w3-padding w3-teal" style="width:120px">Submit &nbsp; ❯</button></p>
+</form>
