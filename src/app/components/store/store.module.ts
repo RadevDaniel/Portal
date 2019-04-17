@@ -7,17 +7,21 @@ import { ListStoreComponent } from './list-store/list-store.component';
 import { CreateStoreComponent } from './create-store/create-store.component';
 import { DetailStoreComponent } from './detail-store/detail-store.component';
 import { FormStoreComponent } from './form-store/form-store.component';
+import { UpdateStoreComponent } from './update-store/update-store.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
         ListStoreComponent,
         CreateStoreComponent,
         DetailStoreComponent,
-        FormStoreComponent
+        FormStoreComponent,
+        UpdateStoreComponent
     ],
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        SharedModule
     ],
     exports: [
         CreateStoreComponent,

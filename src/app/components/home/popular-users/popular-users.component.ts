@@ -1,15 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-popular-users',
   templateUrl: './popular-users.component.html',
   styleUrls: ['./popular-users.component.css']
 })
-export class PopularUsersComponent implements OnInit {
+export class PopularUsersComponent {
   @Input() users: Object;
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

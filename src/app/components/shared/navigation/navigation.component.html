@@ -1,17 +1,17 @@
-<nav class="w3-bar w3-white w3-large ">
-  <li class="w3-bar-item w3-button w3-blue w3-mobile w3-padding-16"><i class="fa fa-bed w3-margin-right"></i>Home</li>
+<nav class="w3-bar w3-white w3-large w3-light-gray">
+  <li [routerLink]="['/home']" class="w3-bar-item w3-button w3-blue w3-mobile w3-padding-16"><i class="fa fa-bed w3-margin-right"></i>Home</li>
   <div *ngIf="isAuthenticated" class="internal">
-    <li class="w3-bar-item w3-button w3-mobile w3-padding-16">Products</li>
+    <li [routerLink]="['/products']" class="w3-bar-item w3-button w3-mobile w3-padding-16">Products</li>
     <li class="w3-bar-item w3-button w3-mobile w3-padding-16">About</li>
     <li class="w3-bar-item w3-button w3-mobile w3-padding-16">Contact</li>
 
-    <div class="w3-dropdown-hover w3-right">
-        <button class="w3-button w3-padding-16 w3-teal" style="min-width: 200px">USER</button>
-        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+    <div class="w3-dropdown-hover w3-right w3-mobile">
+        <button class="w3-button w3-padding-16 w3-teal w3-mobile" style="min-width: 200px">USER</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-mobile">
           <li [routerLink]="['/create']" class="w3-bar-item w3-button w3-mobile">Add Product</li>
           <li class="w3-bar-item w3-button w3-mobile" (click)="logout()">Logout</li>
         </div>
-        <div class="w3-padding-16 w3-teal" style="float:right; width:80px; text-align: center;">d</div>
+        <div class="w3-padding-16 w3-teal w3-mobile" style="float:right; width:80px; text-align: center;">d</div>
     </div>
 
   </div>
