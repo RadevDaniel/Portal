@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import ProductModel from 'src/app/models/product.model';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
   selector: 'app-product-card',
@@ -9,10 +10,14 @@ import ProductModel from 'src/app/models/product.model';
 export class ProductCardComponent implements OnInit {
   @Input() product: ProductModel;
   @Output() deleteProductEmitter = new EventEmitter<string>();
-  
-  constructor() { }
+  isAdmin: boolean;
+  isAuthor: boolean;
+  constructor(
+    private outhService: AuthenticationService
+  ) { }
 
   ngOnInit() {
+    console.log(this.outhService.getPermission())
   }
 
   deleteProduct(id: string){

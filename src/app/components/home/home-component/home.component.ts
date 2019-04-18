@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { GuestService } from 'src/app/core/services/guest.service';
 
@@ -8,7 +8,6 @@ import { GuestService } from 'src/app/core/services/guest.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   isLoginForm: boolean = true;
   labelMassege: string = 'Already have an account?';
   labelAction: string = 'Register';

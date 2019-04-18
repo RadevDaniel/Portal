@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
     let body: object = this.registerForm.value;
     body['rating'] = 0;
     body['reviewers'] = 0;
+    body['isadmin'] = false;
     this.authService.register(body).subscribe((data) => {
         console.log(data);
     });

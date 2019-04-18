@@ -30,6 +30,16 @@ export class AuthenticationService {
     return localStorage.getItem('token');
   };
 
+  getPermission(): string {
+    return localStorage.getItem('permission');
+  };
+
+  getDecodedUser(): Object{
+    let encodedUser = localStorage.getItem('user');
+    let decodedUser = atob(encodedUser);
+    return JSON.parse(decodedUser);
+  }
+
   isAuthenticated(): boolean {
     return this.getToken() !== null;
   };
@@ -43,9 +53,11 @@ export class AuthenticationService {
       this.saveGuestSession(res['_kmd']['authtoken'])
       return;
     }
+    const encUser = btoa(JSON.stringify(res));
     localStorage.setItem('username', res['username']);
     localStorage.setItem('permission', res['isAdmin']);
     localStorage.setItem('userId', res['_id']);
+    localStorage.setItem('user', encUser);
     localStorage.setItem('token', res['_kmd']['authtoken']);
   };
 }

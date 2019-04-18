@@ -1,19 +1,20 @@
 <header class=" w3-container" style="padding: 0 !important">
-  <div class="w3-container" style="padding: 0 !important; max-height: 800px; overflow: hidden">
-      <img class="w3-image" src="/assets/images/marketing.jpg" alt="The Hotel" width="100%" >
-  </div>
+    <div class="w3-container" style="padding: 0 !important; max-height: 800px; overflow: hidden">
+        <img class="w3-image" src="/assets/images/marketing.jpg" alt="The Hotel" width="100%" >
+    </div>
+    
+    <div *ngIf="!isAuthenticated" class="w3-display-left w3-padding w3-col l6 m8">
+      <div class="w3-container w3-blue">
+        <h2><i class="fa fa-bed w3-margin-right"></i>{{labelHeader}}</h2>
+      </div>
+      <div class="w3-container w3-white w3-padding-16">
+        <app-login *ngIf="isLoginForm" ></app-login>
+        <app-register *ngIf="!isLoginForm"></app-register>
+        <div class="w3-margin-top form-link">{{labelMassege}} <span (click)="switchForm()">{{labelAction}}</span></div>
+      </div>
+    </div>
+  </header>
+  <body>
+    <app-popular-users [users]="users"></app-popular-users>
+  </body>
   
-  <div *ngIf="!isAuthenticated" class="w3-display-left w3-padding w3-col l6 m8">
-    <div class="w3-container w3-blue">
-      <h2><i class="fa fa-bed w3-margin-right"></i>{{labelHeader}}</h2>
-    </div>
-    <div class="w3-container w3-white w3-padding-16">
-      <app-login *ngIf="isLoginForm" ></app-login>
-      <app-register *ngIf="!isLoginForm"></app-register>
-      <div class="w3-margin-top form-link">{{labelMassege}} <a href="#" (click)="switchForm()">{{labelAction}}</a></div>
-    </div>
-  </div>
-</header>
-<body>
-  <app-popular-users [users]="users"></app-popular-users>
-</body>

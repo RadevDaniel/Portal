@@ -10,17 +10,25 @@ import { Router } from '@angular/router';
 export class NavigationComponent implements OnInit {
   username: string;
   isAuthenticated: boolean;
+  userImg: string
   constructor(
     private authService: AuthenticationService,
     private router: Router
   ) { }
 
   ngOnInit() {
+ 
   }
 
   ngDoCheck() {
-    this.username = localStorage.getItem('username');
     this.isAuthenticated = this.authService.isAuthenticated();
+    if(this.isAuthenticated){
+      let user = this.authService.getDecodedUser();
+      this.userImg = user['image'];
+      this.username = localStorage.getItem('username');
+      console.log(user)
+    }
+ 
   };
 
   logout(): void {

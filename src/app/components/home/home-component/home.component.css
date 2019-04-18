@@ -1,8 +1,12 @@
 .form-link{
     color: gray;
 }
-.form-link > a:hover {
+.form-link > span {
+    text-decoration: underline;
+}
+.form-link > span:hover {
     color: blue;
+    cursor: pointer;
 }
 body{
     margin: 0 auto;
