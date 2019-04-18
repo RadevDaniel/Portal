@@ -30,6 +30,10 @@ export class AuthenticationService {
     return localStorage.getItem('token');
   };
 
+  get userId(): string {
+    return localStorage.getItem('userId');
+  }
+
   getPermission(): string {
     return localStorage.getItem('permission');
   };

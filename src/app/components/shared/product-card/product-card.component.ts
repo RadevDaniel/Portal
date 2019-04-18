@@ -11,13 +11,15 @@ export class ProductCardComponent implements OnInit {
   @Input() product: ProductModel;
   @Output() deleteProductEmitter = new EventEmitter<string>();
   isAdmin: boolean;
-  isAuthor: boolean;
+  isAuthor: boolean = false;
   constructor(
-    private outhService: AuthenticationService
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit() {
-    console.log(this.outhService.getPermission())
+    if(this.authService.userId == this.product['_acl']['creator']){
+      this.isAuthor = true;
+    }
   }
 
   deleteProduct(id: string){

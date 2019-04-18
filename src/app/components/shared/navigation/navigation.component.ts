@@ -26,7 +26,6 @@ export class NavigationComponent implements OnInit {
       let user = this.authService.getDecodedUser();
       this.userImg = user['image'];
       this.username = localStorage.getItem('username');
-      console.log(user)
     }
  
   };

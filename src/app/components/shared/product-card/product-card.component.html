@@ -7,7 +7,7 @@
       <h6 class="w3-opacity">From ${{product.price}}</h6>
       <p>{{product.description}}</p>
       <p>post views<span> {{product.views}}</span></p>
-      <p class="w3-xxlarge"><i HoverIcon class="fa fa-edit w3-margin-right" [routerLink]="[ '/products/update', product['_id'] ]"></i> <i HoverIcon (click)="deleteProduct(product['_id'])" class="fa fa-trash"></i></p>
+      <p class="w3-xxlarge" *ngIf="isAuthor"><i HoverIcon class="fa fa-edit w3-margin-right" [routerLink]="[ '/products/update', product['_id'] ]"></i> <i HoverIcon (click)="deleteProduct(product['_id'])" class="fa fa-trash"></i></p>
       <button class="w3-button  w3-teal w3-margin-bottom " style="width: 100%" [routerLink]="[ '/products/detail', product['_id']]"><span style="font-size: 90% !important">View Details</span></button>
     </div>
   </div>
