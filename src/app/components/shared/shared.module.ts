@@ -10,12 +10,16 @@ import { ProductCardComponent } from './product-card/product-card.component';
 
 //Directives
 import { HoverIconDirective } from './directives/icon-hover.directive';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
     declarations: [
         NavigationComponent,
         ProductCardComponent,
-        HoverIconDirective
+        HoverIconDirective,
+        SideNavComponent,
+        DetailComponent
     ],
     imports: [
         CommonModule,
@@ -23,7 +27,9 @@ import { HoverIconDirective } from './directives/icon-hover.directive';
     ],
     exports: [
         NavigationComponent,
-        ProductCardComponent
+        ProductCardComponent,
+        SideNavComponent,
+        DetailComponent
     ]
 })
 export class SharedModule {}

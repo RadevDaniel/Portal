@@ -1,0 +1,17 @@
+<div class="w3-overlay  w3-animate-opacity" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:320px;">
+  <div id="Borge" class="w3-container person">
+    <br>
+    <img class="w3-round  w3-animate-top" src="{{detail.image}}" style="width:50%;">
+    <h4><i class="fa fa-map"></i> {{detail.name}}</h4>
+    <h5 class="w3-opacity">Price: ${{detail.price}}</h5>
+    <h5 class="w3-opacity"><i class="fa fa-clock-o"></i> Sep 27, 2015.</h5>
+    <h5 class="w3-opacity">Tags: &nbsp;<i *ngIf="detail.tags.home" class="fa fa-home"></i>&nbsp;&nbsp; <i *ngIf="detail.tags.sport" class="fa fa-bicycle"></i>&nbsp;&nbsp; <i *ngIf="detail.tags.electro" class="fa fa-mobile"></i></h5>
+    <h5 class="w3-opacity"><i class="fa fa-eye"></i>Views: {{detail.views}}.</h5>
+    <li class="w3-button w3-teal w3-margin-right">Add to collection<i class="w3-margin-left fa fa-mail-reply"></i></li>
+    <li class="w3-button w3-teal" href="#">Add to card.<i class="w3-margin-left fa fa-arrow-right"></i></li>
+    <hr>
+    <p>{{detail.description}}</p>
+  </div>
+</div>

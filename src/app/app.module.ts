@@ -5,7 +5,6 @@ import { AppRouterModule } from './router.module';
 
 //Application Modules
 import { HomeModule } from './components/home/home.module';
-import { StoreModule } from './components/store/store.module';
 import { SharedModule } from './components/shared/shared.module';
 
 //Components
@@ -20,10 +19,11 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HomeModule,
     SharedModule,
-    AppRouterModule,
-    StoreModule
+    AppRouterModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

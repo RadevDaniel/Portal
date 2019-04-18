@@ -13,7 +13,6 @@ export class ProductCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    //console.log(this.product)
   }
 
   deleteProduct(id: string){

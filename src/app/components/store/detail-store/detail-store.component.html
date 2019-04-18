@@ -1,3 +1,8 @@
-<p>
-  detail-store works!
-</p>
+<app-side-nav [navArticles$]="products$" (sideNavEventEmitter)="reloadContent($event)"></app-side-nav>
+<div>
+  <ng-container #outlet >
+  </ng-container>
+</div>
+<ng-template #content>
+  <app-detail [detail]="product"></app-detail>
+</ng-template>
