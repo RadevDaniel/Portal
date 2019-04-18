@@ -11,8 +11,8 @@ const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: '/home' },
     { path: 'home', component: HomeComponent },
     { path: 'create', component: CreateStoreComponent },
-    { path: 'update', component: UpdateStoreComponent },
     { path: 'products', component: ListStoreComponent },
+    { path: 'products/update/:id', component: UpdateStoreComponent },
 //   { path: 'posts', loadChildren: './components/post/post.module#PostModule' }
 
 ];

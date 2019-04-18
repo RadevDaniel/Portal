@@ -21,13 +21,19 @@ export class HomeComponent implements OnInit {
   ) { };
 
   ngOnInit() {
-    this.guestService.loginGuest({username: 'guest', password: 'guest'}).subscribe(
-      ()=>{
-        this.guestService.getPopularUsers().subscribe(
-          (data)=> {this.users = data}
-        )
-      }
-    );
+    if(!this.guestService.isGuestLoged){
+      this.guestService.loginGuest({username: 'guest', password: 'guest'}).subscribe(
+        ()=>{
+          this.guestService.getPopularUsers().subscribe(
+            (data)=> {this.users = data}
+          )
+        }
+      );
+    }else{
+      this.guestService.getPopularUsers().subscribe(
+        (data)=> {this.users = data}
+      )
+    }
   };
 
   switchForm(event): void{

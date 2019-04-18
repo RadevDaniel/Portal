@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //Components
 import { ListStoreComponent } from './list-store/list-store.component';
@@ -20,7 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     ],
     imports: [
         CommonModule,
-        FormsModule,
+        ReactiveFormsModule,
         SharedModule
     ],
     exports: [

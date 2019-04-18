@@ -1,22 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { StoreService } from 'src/app/core/services/store.service';
+import { Observable } from 'rxjs';
+import ProductModel from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-list-store',
   templateUrl: './list-store.component.html',
-  styleUrls: ['./list-store.component.css']
+  styleUrls: ['./list-store.component.css'],
+
 })
 export class ListStoreComponent implements OnInit {
-  products: Object[];
+  products$: Observable<ProductModel[]>;
   constructor(
     private storeService: StoreService
   ) { }
 
   ngOnInit() {
-     this.storeService.getAllProducts().subscribe(
-       (data) => {this.products = data; console.log(data)}
-     );
-  }
+    this.loadPosts();
+  };
+
+  loadPosts(): void {
+    this.products$ = this.storeService.getAllProducts();
+  };
+
+  deleteProduct(id: string) {
+    this.storeService.deleteProduct(id).subscribe(() => {
+      this.loadPosts();
+    })
+  };
 
 }

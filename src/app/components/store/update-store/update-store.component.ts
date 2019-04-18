@@ -15,7 +15,7 @@ import { NgForm } from '@angular/forms';
 })
 export class UpdateStoreComponent implements OnInit {
   @ViewChild('formStore') editPostForm: NgForm;
-  post: Object;
+  product: Object;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,21 +24,18 @@ export class UpdateStoreComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    //CREATE RESOLVER?
     const id = this.route.snapshot.params['id'];
-    this.storeService.getProductById(id);
-      // .subscribe((data) => {
-      //   this.post = data;
-      // });
-  }
+    this.storeService.getProductById(id)
+      .subscribe((data) => {
+        this.product = data;
+      });
+  };
 
-  editPost() {
-    const body = this.editPostForm.value;
-    body['author'] = localStorage.getItem('username');
-
-    this.storeService.editProduct(body, this.post['_id']);
-      // .subscribe(() => {
-      //   this.router.navigate([ '/posts' ]);
-      // })
-  }
+  editPost(event) {
+    this.storeService.editProduct(event, this.product['_id']).subscribe(() => {
+        this.router.navigate([ '/products' ]);
+    });
+  };
 
 }

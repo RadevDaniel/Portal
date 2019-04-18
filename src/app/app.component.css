@@ -1,0 +1,6 @@
+*{
+    transition: .3s;
+}
+html, body{
+    background-color: lightgray;
+}

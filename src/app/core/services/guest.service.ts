@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { credentials } from '../../../environments/environment';
+import { Observable } from 'rxjs';
 
 const APP_KEY = credentials.key;
 
@@ -14,16 +15,20 @@ export class GuestService {
     private http: HttpClient
   ) { }
 
-  loginGuest(body: Object){
+  loginGuest(body: Object): Observable<Object>{
     return this.http.post(`${this.BASE_URL}/login`, body);
   };
 
-  getPopularUsers(){
-    return this.http.get(`${this.BASE_URL}?query={"rating":{"$gte":3}}`);
+  getPopularUsers(): Observable<Object[]>{
+    return this.http.get<Object[]>(`${this.BASE_URL}?query={"rating":{"$gte":3}}`);
   };
   
-  getToken() {
+  getToken(): string {
     return localStorage.getItem('guestToken');
+  };
+
+  get isGuestLoged(): boolean {
+    return this.getToken() !== null;
   };
 
 }

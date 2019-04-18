@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 //Services
 import { StoreService } from 'src/app/core/services/store.service';
+import { Router } from '@angular/router';
+import ProductModel from 'src/app/models/product.model';
 
 
 @Component({
@@ -11,30 +13,17 @@ import { StoreService } from 'src/app/core/services/store.service';
 })
 export class CreateStoreComponent implements OnInit {
   constructor(
-    private store: StoreService
+    private store: StoreService,
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
 
-  prepareProduct(event){
-    let tags: Object = event.tags;
-    let tagCollection: Array<String> = [];
-    let body = event;
-    for(let tag in tags){
-      if(tags[tag] !== '' && !!tags[tag]){
-        tagCollection.push(tag)
-      }
-    }
-
-    body.tags = tagCollection;
-    body['views'] = 0;
-
-    this.submitProduct(body);
-  };
-
-  submitProduct(body: Object){
-    this.store.uploadProduct(body).subscribe();
+  submitProduct(body: ProductModel){
+    this.store.uploadProduct(body).subscribe(()=>{
+      this.router.navigate(['/products']);
+    });
   };
 
 }

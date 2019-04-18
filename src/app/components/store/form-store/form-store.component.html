@@ -2,62 +2,66 @@
 <div class="w3-container w3-teal" style=" max-width: 1200px; margin: 0 auto;">
     <h2>Input Form</h2>
 </div>
-<form #formStore="ngForm"  (submit)="submitProduct()" class="w3-container w3-card-4" style="max-width: 1200px; margin: 0 auto;">
-  <div  *ngIf="image.touched && image.errors?.required" class="w3-panel w3-red w3-display-container">
-      <p>Image field is required!</p>
-  </div> 
-  <div  *ngIf="image.touched && image.errors?.pattern" class="w3-panel w3-red w3-display-container">
-      <p>Please provide valid image url!</p>
-  </div>
- 
-  <div *ngIf="inputName.touched && inputName.errors?.required" class="w3-panel w3-red w3-display-container">
+<form *ngIf="formStore || isPost" [formGroup]="formStore" class="w3-container w3-card-4" style="max-width: 1200px; margin: 0 auto;">
+  <div  *ngIf="f.name.touched && f.name.errors?.required" class="w3-panel w3-red w3-display-container">
       <p>Name field is required!</p>
-  </div>
-  <div *ngIf="inputName.touched && inputName.errors?.minlength" class="w3-panel w3-red w3-display-container">
-      <p>The name must contains atleast {{inputName.errors.minlength.requiredLength}} symbols</p>
+  </div> 
+  <div  *ngIf="f.name.touched && f.name.errors?.minlength" class="w3-panel w3-red w3-display-container">
+      <p>The name must contains atleast {{f.name.errors.minlength.requiredLength}} symbols!</p>
   </div>
 
-  <div *ngIf="price.touched && price.errors?.required" class="w3-panel w3-red w3-display-container">
+  <div *ngIf="f.price.touched && f.price.errors?.required" class="w3-panel w3-red w3-display-container">
       <p>Please provide a price!</p>
   </div>
-
-  <div *ngIf="desc.touched && desc.errors?.required" class="w3-panel w3-red w3-display-container">
-    <p>Name field is required!</p>
+  <div *ngIf="f.price.touched && f.price.errors?.min" class="w3-panel w3-red w3-display-container">
+      <p>The price should be minimum {{f.price.errors.min.min}}$!</p>
   </div>
-  <div *ngIf="desc.touched && desc.errors?.minlength" class="w3-panel w3-red w3-display-container">
-    <p>The name must contains atleast {{desc.errors.minlength.requiredLength}} symbols</p>
+
+  <div *ngIf="f.image.touched && f.image.errors?.required" class="w3-panel w3-red w3-display-container">
+      <p>Image address is required!</p>
+  </div>
+  <div *ngIf="f.image.touched && f.image.errors?.pattern" class="w3-panel w3-red w3-display-container">
+      <p>Image should start with http, and should match with {{f.image.errors.pattern.requiredPattern}} !</p>
+  </div>
+  <div  *ngIf="f.description.touched && f.description.errors?.required" class="w3-panel w3-red w3-display-container">
+      <p>Description field is required!</p>
+  </div> 
+  <div  *ngIf="f.description.touched && f.description.errors?.minlength" class="w3-panel w3-red w3-display-container">
+      <p>The description must contains atleast {{f.description.errors.minlength.requiredLength}} symbols!</p>
   </div>
 
     <br>
     <p>      
       <label class="w3-text-grey">Name</label>
-      <input #inputName="ngModel" name="name" class="w3-input w3-border" type="text" ngModel required minlength="6">
+      <input formControlName="name" class="w3-input w3-border" type="text">
     </p>
     <p class="w3-half">      
         <label class="w3-text-grey">Price</label>
-        <input #price="ngModel" name="price" class="w3-input w3-border" type="number" ngModel required>
+        <input formControlName="price" class="w3-input w3-border" min="1" type="number" >
     </p>
     <p class="w3-half">      
         <label class="w3-text-grey">ImageUrl</label>
-        <input #image="ngModel" name="image" class="w3-input w3-border" type="url" pattern="http([A-Za-z\:./\d_=+-])+" ngModel required>
+        <input formControlName="image" class="w3-input w3-border" type="url" >
     </p>
     <p>      
       <label class="w3-text-grey">Description</label>
-      <textarea #desc="ngModel" name="description" class="w3-input w3-border" style="resize:none" ngModel minlength="20" required></textarea>
+      <textarea formControlName="description" class="w3-input w3-border" style="resize:none"></textarea>
     </p>
     <br>
     <div class="w3-row">
-      <div  ngModelGroup="tags" class="w3-half">
-        <input name="electro" id="Electronics" class="w3-check" type="checkbox" ngModel>
+      <div formGroupName="tags" class="w3-half">
+        <input formControlName="electro" id="Electronics" class="w3-check" type="checkbox" >
         <label>Electronics</label>
         <br>
-        <input name="home" id="Home and Garden" class="w3-check" type="checkbox" ngModel>
+        <input formControlName="home" id="Home and Garden" class="w3-check" type="checkbox" >
         <label>Home and Garden</label>
         <br>
-        <input name="sport" id="Sports" class="w3-check" type="checkbox" ngModel>
+        <input formControlName="sport" id="Sports" class="w3-check" type="checkbox" >
         <label>Sports</label>
         <br><br>
       </div>
     </div>
-    <p><button type="submit" [disabled]="formStore.invalid" class="w3-btn w3-padding w3-teal" style="width:120px">Submit &nbsp; ❯</button></p>
+    
+    <p *ngIf="!singleProduct"><button (click)="submitProduct()" [disabled]="formStore.invalid"  class="w3-btn w3-padding w3-teal" style="max-width:350px">Submit &nbsp; ❯</button></p>
+    <p *ngIf="singleProduct"><button (click)="updateProduct()" [disabled]="formStore.invalid" class="w3-btn w3-padding w3-teal" style="max-width:350px">Update Product &nbsp; ❯</button></p>
 </form>

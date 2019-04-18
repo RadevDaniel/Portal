@@ -7,10 +7,15 @@ import { RouterModule } from '@angular/router';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 
+
+//Directives
+import { HoverIconDirective } from './directives/icon-hover.directive';
+
 @NgModule({
     declarations: [
         NavigationComponent,
-        ProductCardComponent
+        ProductCardComponent,
+        HoverIconDirective
     ],
     imports: [
         CommonModule,
