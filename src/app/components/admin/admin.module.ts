@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 //Components
 import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
     ],
     imports: [
         CommonModule,
+        RouterModule
     ],
     exports: [
         

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import UserModel from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   };
 
   register() {
-    let body: object = this.registerForm.value;
+    let body: UserModel = this.registerForm.value;
     body['rating'] = 0;
     body['reviewers'] = 0;
     body['isadmin'] = false;

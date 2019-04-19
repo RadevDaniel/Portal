@@ -16,7 +16,7 @@ import ProductModel from 'src/app/models/product.model';
 })
 export class ProfileComponent implements OnInit {
   profile: Object;
-  products$: Observable<ProductModel>
+  products$: Observable<ProductModel[]>
   constructor(
     private authService: AuthenticationService,
     private userService: UserService,
@@ -29,9 +29,7 @@ export class ProfileComponent implements OnInit {
   };
 
   deleteUser(id: string){
-    console.log(id)
     this.userService.deleteUser(id).subscribe((data) => {
-      console.log(data)
       this.authService.clearSession();
       this.router.navigate([ '/home' ]);
     });

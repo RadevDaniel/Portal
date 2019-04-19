@@ -1,1 +1,17 @@
-hello Admin
+<div class="w3-container">
+        <h2>Avatar List</h2>
+        <p>You can set actions to users: Make Admin, Remove Admin Rights, Delete User</p>
+        <ul class="w3-ul w3-card-4">
+          <li *ngFor="let user of (users$ | async)" class="w3-bar w3-white">
+            <div (click)="goToUser(user['_id'])" style="display: table; width: 80%; cursor: pointer;" >
+                
+                <img *ngIf="user.image" [src]="user.image" class="w3-bar-item w3-circle w3-hide-small" style="width:85px; height: 70px;">
+                <img *ngIf="!user.image" src="/assets/images/blank-avatar.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px; height: 70px;">
+                <div class="w3-bar-item">
+                  <span class="w3-large">{{user.username}}</span><br>
+                </div>
+            </div>
+            <span (click)="deleteUser(user['_id'])" class="w3-bar-item w3-button w3-white w3-xlarge w3-right"><i class="fa fa-trash" style="cursor: pointer;"></i></span>
+          </li>
+        </ul>
+    </div>
