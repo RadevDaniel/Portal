@@ -13,6 +13,7 @@ import { HoverIconDirective } from './directives/icon-hover.directive';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { DetailComponent } from './detail/detail.component';
 import { PopularUsersComponent } from './popular-users/popular-users.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { PopularUsersComponent } from './popular-users/popular-users.component';
         HoverIconDirective,
         SideNavComponent,
         DetailComponent,
-        PopularUsersComponent
+        PopularUsersComponent,
+        FooterComponent
     ],
     imports: [
         CommonModule,
@@ -32,7 +34,8 @@ import { PopularUsersComponent } from './popular-users/popular-users.component';
         ProductCardComponent,
         SideNavComponent,
         DetailComponent,
-        PopularUsersComponent
+        PopularUsersComponent,
+        FooterComponent
     ]
 })
 export class SharedModule {}

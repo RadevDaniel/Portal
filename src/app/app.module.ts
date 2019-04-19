@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Application Modules
 import { HomeModule } from './components/home/home.module';
 import { SharedModule } from './components/shared/shared.module';
+import { AdminModule } from './components/admin/admin.module';
+
 
 //Components
 import { AppComponent } from './app.component';
@@ -22,6 +24,7 @@ import { ToastrModule } from 'ngx-toastr';
     HomeModule,
     SharedModule,
     AppRouterModule,
+    AdminModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],

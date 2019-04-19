@@ -4,3 +4,6 @@
 html, body{
     background-color: lightgray;
 }
+.app-container{
+    min-height: 85vh;
+}

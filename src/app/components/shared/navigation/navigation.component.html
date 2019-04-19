@@ -3,7 +3,7 @@
   <div *ngIf="isAuthenticated" class="internal">
     <li routerLink="products" class="w3-bar-item w3-button w3-mobile w3-padding-16">Products</li>
     <li [routerLink]="['users/sellers']" class="w3-bar-item w3-button w3-mobile w3-padding-16">Sellers</li>
-    <li class="w3-bar-item w3-button w3-mobile w3-padding-16">Contact</li>
+    <li *ngIf="isAdmin" [routerLink]="['/admin']" class="w3-bar-item w3-button w3-mobile w3-padding-16">Admin</li>
 
     <div class="w3-dropdown-hover w3-right w3-mobile">
         <button class="w3-button w3-padding-16 w3-teal w3-mobile" style="min-width: 200px">{{username}}</button>

@@ -7,21 +7,19 @@ import { Router } from '@angular/router';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent{
   username: string;
   isAuthenticated: boolean;
+  isAdmin: boolean;
   userImg: string
   constructor(
     private authService: AuthenticationService,
     private router: Router
   ) { }
 
-  ngOnInit() {
- 
-  }
-
   ngDoCheck() {
     this.isAuthenticated = this.authService.isAuthenticated();
+    this.isAdmin = this.authService.isAdmin;
     if(this.isAuthenticated){
       let user = this.authService.getDecodedUser();
       this.userImg = user['image'];
