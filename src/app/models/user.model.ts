@@ -4,5 +4,15 @@ export default interface UserModel {
     image: string,
     rating: number,
     reviewers: number,
-    username: string
+    username: string,
+    _kmd: {
+        authoken: string,
+        roles: Array<RoleModel>
+    }
+}
+
+interface RoleModel {
+    grantDate: string,
+    grantedBy: string,
+    roleId: string
 }

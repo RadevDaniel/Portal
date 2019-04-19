@@ -10,7 +10,7 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 export class ProductCardComponent implements OnInit {
   @Input() product: ProductModel;
   @Output() deleteProductEmitter = new EventEmitter<string>();
-  isAdmin: boolean;
+  isAdmin: boolean = false;
   isAuthor: boolean = false;
   constructor(
     private authService: AuthenticationService
@@ -20,6 +20,8 @@ export class ProductCardComponent implements OnInit {
     if(this.authService.userId == this.product['_acl']['creator']){
       this.isAuthor = true;
     }
+
+    this.isAdmin = this.authService.isAdmin;
   }
 
   deleteProduct(id: string){

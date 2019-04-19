@@ -18,6 +18,10 @@ export const guest = {
   guestSecret: 'guest'
 };
 
+export const roles = {
+  admin: 'dde73a29-e344-432b-965a-a2d1fcff9ca6'
+}
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

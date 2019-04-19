@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StoreService } from 'src/app/core/services/store.service';
 import { Observable } from 'rxjs';
 import ProductModel from 'src/app/models/product.model';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
   selector: 'app-list-store',

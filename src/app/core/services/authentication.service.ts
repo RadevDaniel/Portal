@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { credentials } from '../../../environments/environment';
+import { credentials, roles } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import UserModel from 'src/app/models/user.model';
 
 const APP_KEY = credentials.key;
+const ADMIN_ROLE = roles.admin;
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+  uRole: string = 'user';
   private BASE_URL = `https://baas.kinvey.com/user/${APP_KEY}`;
 
   constructor(
@@ -31,10 +33,6 @@ export class AuthenticationService {
     return localStorage.getItem('token');
   };
 
-  get userId(): string {
-    return localStorage.getItem('userId');
-  }
-
   getPermission(): string {
     return localStorage.getItem('permission');
   };
@@ -49,6 +47,10 @@ export class AuthenticationService {
     return this.getToken() !== null;
   };
 
+  get isAdmin(): boolean {
+    return this.getPermission() !== 'user';
+  }
+
   saveGuestSession(res: string): void{
     localStorage.setItem('guestToken', res);
   };
@@ -59,16 +61,30 @@ export class AuthenticationService {
     localStorage.removeItem('userId')
     localStorage.removeItem('user')
     localStorage.removeItem('token');
-  }
+  };
+
+  setUserRole(role: Array<Object>){
+    if(!role){ this.uRole = 'user'; return;}
+    for(let i = 0, len = role.length; i < len; i++){
+      if(role[i]['roleId'] = ADMIN_ROLE){
+       this.uRole = 'admin';
+      }
+    }
+  };
+
+  get userId(): string {
+    return localStorage.getItem('userId');
+  };
 
   saveSession(res: UserModel, req: string): void {
     if(req === 'guest'){ 
       this.saveGuestSession(res['_kmd']['authtoken'])
       return;
     }
+    this.setUserRole(res['_kmd']['roles']);
     const encUser = btoa(JSON.stringify(res));
     localStorage.setItem('username', res['username']);
-    localStorage.setItem('permission', res['isAdmin']);
+    localStorage.setItem('permission', this.uRole);
     localStorage.setItem('userId', res['_id']);
     localStorage.setItem('user', encUser);
     localStorage.setItem('token', res['_kmd']['authtoken']);
