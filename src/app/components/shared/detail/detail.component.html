@@ -1,7 +1,7 @@
 <div class="w3-overlay  w3-animate-opacity" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
 
-<div class="w3-main" style="margin-left:320px;">
-  <div id="Borge" class="w3-container person">
+<div *ngIf="!user" class="w3-main" style="margin-left:320px;">
+  <div  id="Borge" class="w3-container person">
     <br>
     <img class="w3-round  w3-animate-top" src="{{detail.image}}" style="width:50%;">
     <h4><i class="fa fa-map"></i> {{detail.name}}</h4>
@@ -14,4 +14,17 @@
     <hr>
     <p>{{detail.description}}</p>
   </div>
+</div>
+
+<div *ngIf="user" class="w3-container person">
+  <br>
+  <img class="w3-round  w3-animate-top" src="{{user.image}}" style="width:50%;">
+  <h4><i class="fa fa-map"></i> {{user.username}}</h4>
+  <h5 class="w3-opacity"></h5>
+  <h5 class="w3-opacity"><i class="fa fa-clock-o"></i> Sep 27, 2015.</h5>
+  <h5 class="w3-opacity"><i class="fa fa-eye"></i>Rating: {{user.rating}}</h5>
+  <li class="w3-button w3-teal w3-margin-right">Edit Profile<i class="w3-margin-left fa fa-mail-reply"></i></li>
+  <li class="w3-button w3-teal" (click)="deleteProfile(user._id)" href="#">Delete Profile<i class="w3-margin-left fa fa-arrow-right"></i></li>
+  <hr>
+  <p></p>
 </div>

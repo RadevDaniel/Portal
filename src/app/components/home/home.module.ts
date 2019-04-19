@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 //Components
 import { HomeComponent } from './home-component/home.component';
 import { AuthModule } from '../authentication/auth.module';
-import { PopularUsersComponent } from './popular-users/popular-users.component';
+import { PopularUsersComponent } from '../shared/popular-users/popular-users.component';
 
 
 @NgModule({

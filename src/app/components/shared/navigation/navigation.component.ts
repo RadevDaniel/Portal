@@ -32,7 +32,7 @@ export class NavigationComponent implements OnInit {
 
   logout(): void {
     this.authService.logout().subscribe(() => {
-        localStorage.clear();
+        this.authService.clearSession();
         this.router.navigate([ '/home' ])
       });
   };

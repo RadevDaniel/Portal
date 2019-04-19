@@ -1,0 +1,10 @@
+<app-detail *ngIf="profile" [user]="profile" (deleteUserEmitter)="deleteUser($event)"></app-detail>
+<div>
+    <app-product-card
+        *ngFor="let product of (products$ | async);"
+        [product]="product"
+        (deleteProductEmitter)="deleteUser($event)"
+    ></app-product-card>
+</div>
+
+<div *ngIf="!product">You haven't upload anything by now!</div>

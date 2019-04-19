@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { credentials } from '../../../environments/environment';
 import { Observable } from 'rxjs';
+import UserModel from 'src/app/models/user.model';
 
 const APP_KEY = credentials.key;
 @Injectable({
@@ -14,12 +15,12 @@ export class AuthenticationService {
     private http: HttpClient
   ) { }
 
-  register(body: Object): Observable<Object> {
-    return this.http.post(this.BASE_URL, body);
+  register(body: UserModel): Observable<UserModel> {
+    return this.http.post<UserModel>(this.BASE_URL, body);
   };
 
-  login(body: Object): Observable<Object> {
-    return this.http.post(`${this.BASE_URL}/login`, body);
+  login(body: UserModel): Observable<UserModel> {
+    return this.http.post<UserModel>(`${this.BASE_URL}/login`, body);
   };
 
   logout(): Observable<Object> {
@@ -38,9 +39,9 @@ export class AuthenticationService {
     return localStorage.getItem('permission');
   };
 
-  getDecodedUser(): Object{
-    let encodedUser = localStorage.getItem('user');
-    let decodedUser = atob(encodedUser);
+  getDecodedUser(): UserModel{
+    const encodedUser = localStorage.getItem('user');
+    const decodedUser = atob(encodedUser);
     return JSON.parse(decodedUser);
   }
 
@@ -52,7 +53,15 @@ export class AuthenticationService {
     localStorage.setItem('guestToken', res);
   };
 
-  saveSession(res: Object, req: Object): void {
+  clearSession(): void{
+    localStorage.removeItem('username')
+    localStorage.removeItem('permission')
+    localStorage.removeItem('userId')
+    localStorage.removeItem('user')
+    localStorage.removeItem('token');
+  }
+
+  saveSession(res: UserModel, req: string): void {
     if(req === 'guest'){ 
       this.saveGuestSession(res['_kmd']['authtoken'])
       return;

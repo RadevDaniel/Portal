@@ -6,7 +6,7 @@ import { credentials } from '../../../environments/environment';
 import ProductModel from 'src/app/models/product.model';
 import { Observable } from 'rxjs';
 
-const APP_KEY = credentials.key;
+const APP_KEY: string  = credentials.key;
 @Injectable({
   providedIn: 'root'
 })
@@ -36,7 +36,8 @@ export class StoreService {
   };
 
   deleteProduct(id: string): Observable<Object> {
-    return this.http.delete(this.STORE_URL + `/${id}`);
+    let action = this.http.delete(this.STORE_URL + `/${id}`);
+    return action;
   };
 
 }
