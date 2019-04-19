@@ -17,10 +17,8 @@ export class ProductCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(this.authService.userId == this.product['_acl']['creator']){
-      this.isAuthor = true;
-    }
-
+    this.isAuthor = this.authService.isAuthor(this.product['_acl']['creator']);
+    console.log(this.isAuthor)
     this.isAdmin = this.authService.isAdmin;
   }
 

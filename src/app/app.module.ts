@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRouterModule } from './router.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Application Modules
 import { HomeModule } from './components/home/home.module';
@@ -9,6 +10,7 @@ import { SharedModule } from './components/shared/shared.module';
 
 //Components
 import { AppComponent } from './app.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HomeModule,
     SharedModule,
-    AppRouterModule
+    AppRouterModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [

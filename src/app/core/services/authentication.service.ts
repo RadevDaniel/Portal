@@ -47,9 +47,9 @@ export class AuthenticationService {
     return this.getToken() !== null;
   };
 
-  get isAdmin(): boolean {
-    return this.getPermission() !== 'user';
-  }
+  isAuthor(creatorId: string): boolean {
+    return this.userId == creatorId; 
+  };
 
   saveGuestSession(res: string): void{
     localStorage.setItem('guestToken', res);
@@ -74,6 +74,10 @@ export class AuthenticationService {
 
   get userId(): string {
     return localStorage.getItem('userId');
+  };
+
+  get isAdmin(): boolean {
+    return this.getPermission() !== 'user';
   };
 
   saveSession(res: UserModel, req: string): void {
