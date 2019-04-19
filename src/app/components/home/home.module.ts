@@ -2,20 +2,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+//Custom Modules
+import { SharedModule } from '../shared/shared.module';
 //Components
 import { HomeComponent } from './home-component/home.component';
 import { AuthModule } from '../authentication/auth.module';
-import { PopularUsersComponent } from '../shared/popular-users/popular-users.component';
+
 
 
 @NgModule({
     declarations: [
-        HomeComponent,
-        PopularUsersComponent
+        HomeComponent
     ],
     imports: [
         CommonModule,
-        AuthModule
+        AuthModule,
+        SharedModule
     ],
     exports: [
         HomeComponent

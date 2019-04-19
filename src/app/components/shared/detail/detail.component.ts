@@ -14,7 +14,7 @@ import ProductModel from 'src/app/models/product.model';
 export class DetailComponent implements OnInit {
   @Input('detail') detail: ProductModel;
   @Input('user') user: UserModel;
-  @Output('deleteUserEmitter') deleteUserEmitter = new EventEmitter<string>()
+  @Output('deleteUserEmitter') deleteUserEmitter = new EventEmitter<string>();
   constructor(
     private storeService: StoreService
   ) { }

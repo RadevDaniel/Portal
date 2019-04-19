@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { GuestService } from 'src/app/core/services/guest.service';
+import UserModel from 'src/app/models/user.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ export class HomeComponent implements OnInit {
   labelMassege: string = 'Already have an account?';
   labelAction: string = 'Register';
   labelHeader: string = 'Login';
-  users: Object;
+  users$: Observable<UserModel[]>;
 
   constructor(
     private authService: AuthenticationService,
@@ -22,16 +24,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     if(!this.guestService.isGuestLoged){
       this.guestService.loginGuest({username: 'guest', password: 'guest'}).subscribe(
-        ()=>{
-          this.guestService.getPopularUsers().subscribe(
-            (data)=> {this.users = data}
-          )
-        }
+        ()=>{ this.users$ = this.guestService.getPopularUsers() }
       );
     }else{
-      this.guestService.getPopularUsers().subscribe(
-        (data)=> {this.users = data}
-      )
+      this.users$ = this.guestService.getPopularUsers();
     }
   };
 

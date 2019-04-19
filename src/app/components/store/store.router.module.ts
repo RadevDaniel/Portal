@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 //Resolvers
-import { ProductResolver } from 'src/app/core/product.resolver';
+import { ProductResolver } from 'src/app/core/resolvers/product.resolver';
 
 //Components
 import { DetailStoreComponent } from './detail-store/detail-store.component';

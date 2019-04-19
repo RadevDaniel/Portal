@@ -24,6 +24,7 @@ export class DetailStoreComponent implements OnInit {
 
   ngOnInit() {
     const data = this.route.snapshot.data['productR'];
+    console.log(data)
     
     this.products$ = this.storeService.getAllProducts();
     this.product = data;

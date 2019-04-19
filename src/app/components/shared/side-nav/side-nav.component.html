@@ -2,13 +2,24 @@
   <a  class="w3-bar-item w3-button w3-border-bottom w3-large"><img src="https://www.w3schools.com/images/w3schools.png" style="width:60%;"></a>
   
   <a id="myBtn" class="w3-bar-item w3-button w3-blue"><i class="fa fa-inbox w3-margin-right"></i>Products</a>
-  <div id="Demo1" class="w3-animate-left">
-    <a *ngFor="let component of (navArticles$ | async)"  class="w3-bar-item w3-button w3-border-bottom test w3-hover-grey" id="firstTab">
+  <div *ngIf="navArticles$" id="Demo1" class="w3-animate-left">
+    <a  *ngFor="let component of (navArticles$ | async)"  class="w3-bar-item w3-button w3-border-bottom test w3-hover-grey" id="firstTab">
       <div (click)="routeDetail(component)" class="w3-container">
-        <img class="w3-round w3-margin-right" [src]="component.image" style="width:15%;"><span class="w3-opacity w3-large">{{component.name}}</span>
+        <img class="w3-round w3-margin-right" [src]="component.image" style="width:15%;">
+        <span class="w3-opacity w3-large">{{component.name}}</span>
         <h5 class="w3-opacity">Price: ${{component.price}}</h5>
         <p>{{component.description | slice:0:50 }}</p>
       </div>
     </a>
   </div>
+  <div *ngIf="userArticles$" id="Demo1" class="w3-animate-left">
+      <a  *ngFor="let user of (userArticles$ | async)"  class="w3-bar-item w3-button w3-border-bottom test w3-hover-grey" id="firstTab">
+        <div *ngIf="user.username != 'guest'" (click)="routeDetail(user)" class="w3-container">
+          <img *ngIf="user.image" class="w3-round w3-margin-right" [src]="user.image" style="width:15%;">
+          <img *ngIf="!user.image" class="w3-round w3-margin-right" src="/assets/images/blank-avatar.png" style="width:15%; height:15%">
+          <span class="w3-opacity w3-large">{{user.username}}</span>
+          <h5 class="w3-opacity">Rating: {{user.rating}}</h5>
+        </div>
+      </a>
+    </div>
 </nav>

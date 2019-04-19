@@ -21,7 +21,10 @@
         </div>
           
         <div class="w3-row-padding w3-margin-top">
-          <app-popular-users [users]="users"></app-popular-users>
+          <app-popular-users
+            *ngFor="let user of (users$ | async)"
+            [user]="user">
+          </app-popular-users>
         </div>      
       </div>
   </body>

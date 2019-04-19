@@ -9,5 +9,5 @@ import UserModel from 'src/app/models/user.model';
   styleUrls: ['./popular-users.component.css']
 })
 export class PopularUsersComponent {
-  @Input() users: UserModel;
+  @Input() user: UserModel;
 }
