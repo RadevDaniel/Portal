@@ -10,7 +10,6 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 })
 export class LoginComponent implements OnInit {
   @ViewChild('loginForm') loginForm : NgForm;
-  
   constructor(
     private authService: AuthenticationService
   ){ };
